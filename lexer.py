@@ -20,8 +20,8 @@ class Lexer:
     ('float_constant',    r'\d+\.\d+'),
     ('integer_constant',  r'\d+'),
     ('identifier',        r'[a-zA-Z_][a-zA-Z0-9_]*'),
-    ('boolean_operator',  r'(&&|\|\||!)'),
     ('relational_operator', r'(<=|>=|==|!=|<|>)'),
+    ('boolean_operator',  r'(&&|\|\||!)'),
     ('arithmetic_operator', r'(\+|-|\*|/|%)'),
     ('assignment',        r'='),
     ('semicolon',         r';'),
@@ -52,12 +52,3 @@ class Lexer:
                 tokens.append((kind, value))
         return tokens
 
-lexer = Lexer()
-
-with open('code.tarun', 'r') as file:
-    code = file.read()
-    try:
-        tokens = lexer.tokenize(code)
-        print("Tokens:", tokens)
-    except RuntimeError as e:
-        print("Lexical Error:", e)
